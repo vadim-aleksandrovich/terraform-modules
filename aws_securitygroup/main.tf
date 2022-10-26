@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "webserver" {
-  name        = var.sg_name
+  name        = "Web Server SG for VPC: ${var.sg_name}"
   description = "Security Group for VPC: ${var.vpc_id}"
 
   dynamic "ingress" {
@@ -31,7 +31,7 @@ resource "aws_security_group" "webserver" {
   }
 
   tags = {
-    Name = var.sg_name
+    Environment = var.sg_name
   }
 
 }
