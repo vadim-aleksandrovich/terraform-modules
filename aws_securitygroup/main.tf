@@ -2,6 +2,7 @@
 resource "aws_security_group" "webserver" {
   name        = "Web Server SG for VPC: ${var.sg_name}"
   description = "Security Group for VPC: ${var.vpc_id}"
+  vpc_id      = var.vpc.id
 
   dynamic "ingress" {
     for_each = var.allow_ports_webserver
