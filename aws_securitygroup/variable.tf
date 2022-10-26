@@ -28,3 +28,9 @@ variable "common_tags" {
     Environment = "development"
   }
 }
+
+variable "sg_name" {
+  default = {
+    Name = ""
+  }
+}

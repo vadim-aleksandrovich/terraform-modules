@@ -1,7 +1,7 @@
 
 resource "aws_security_group" "webserver" {
-  name        = "WebServer Security Group"
-  description = "My First SecurityGroup"
+  name        = var.sg_name
+  description = "Security Group for VPC: ${var.vpc_id}"
 
   dynamic "ingress" {
     for_each = var.allow_ports_webserver
@@ -30,6 +30,8 @@ resource "aws_security_group" "webserver" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = merge(var.common_tags, { Name = "${var.common_tags["Environment"]} Web Server SecurityGroup" })
+  tags = {
+    Name = var.sg_name
+  }
 
 }
